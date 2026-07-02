@@ -12,21 +12,8 @@ struct ProductCell: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: product.thumbnail)) { phase in
-                switch phase {
-                case .empty:
-                    Color.gray
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                case .failure(_):
-                    Color.gray
-                @unknown default:
-                    fatalError()
-                }
-            }
-            .frame(width: 100, height: 100)
+            ImageView(imageString: product.thumbnail)
+                .frame(width: 100, height: 100)
 
             VStack(alignment: .leading) {
                 Text(product.title)
