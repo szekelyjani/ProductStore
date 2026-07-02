@@ -16,7 +16,7 @@ struct ProductDetailView: View {
             ImageView(imageString: product.images.first ?? product.thumbnail)
                 .frame(width: 300, height: 225)
 
-            VStack {
+            VStack(spacing: 10) {
                 Text(product.title)
                     .font(.title)
 
@@ -25,19 +25,16 @@ struct ProductDetailView: View {
                     .font(.body)
                     .minimumScaleFactor(0.7)
                     .padding()
-
-                Spacer()
-
-                Button {
-
-                } label: {
-                    Label("$\(product.price, specifier: "%.2f") - Add to Cart", systemImage: "cart.badge.plus")
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .padding(.bottom)
             }
 
+            Button {
+
+            } label: {
+                Label("$\(product.price, specifier: "%.2f") - Add to Cart", systemImage: "cart.badge.plus")
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            .padding(.bottom)
         }
         .frame(width: 300, height: 525)
         .background(.background)
@@ -47,18 +44,7 @@ struct ProductDetailView: View {
             Button {
                 isShowingDetail = false
             } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.secondary)
-                        .opacity(0.6)
-
-                    Image(systemName: "xmark")
-                        .imageScale(.small)
-                        .frame(width: 44, height: 44)
-                        .foregroundColor(.black)
-                }
-
+                XDismissButton()
             }
             .buttonStyle(.plain)
         }

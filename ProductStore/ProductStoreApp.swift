@@ -11,7 +11,22 @@ import SwiftUI
 struct ProductStoreApp: App {
     var body: some Scene {
         WindowGroup {
-            ProductListView()
+            TabView {
+                ProductListView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+
+                AccountView()
+                    .tabItem {
+                        Label("Account", systemImage: "person")
+                    }
+
+                OrderView()
+                    .tabItem {
+                        Label("Order", systemImage: "bag")
+                    }
+            }
         }
     }
 }
