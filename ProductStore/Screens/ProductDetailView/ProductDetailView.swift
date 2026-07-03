@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductDetailView: View {
+    @EnvironmentObject var order: Order
     let product: Product
     @Binding var isShowingDetail: Bool
 
@@ -28,7 +29,8 @@ struct ProductDetailView: View {
             }
 
             Button {
-
+                order.add(product)
+                isShowingDetail = false
             } label: {
                 Label("$\(product.price, specifier: "%.2f") - Add to Cart", systemImage: "cart.badge.plus")
             }

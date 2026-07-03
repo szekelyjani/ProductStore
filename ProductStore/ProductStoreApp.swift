@@ -9,24 +9,12 @@ import SwiftUI
 
 @main
 struct ProductStoreApp: App {
+    var order = Order()
+
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ProductListView()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-
-                AccountView()
-                    .tabItem {
-                        Label("Account", systemImage: "person")
-                    }
-
-                OrderView()
-                    .tabItem {
-                        Label("Order", systemImage: "bag")
-                    }
-            }
+            ProductTabView()
+                .environmentObject(order)
         }
     }
 }
