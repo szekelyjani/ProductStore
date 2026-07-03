@@ -25,6 +25,11 @@ struct ProductListView: View {
             .navigationTitle("Products")
             .disabled(isShowingDetail)
             .overlay {
+                if productStore.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(.circular)
+                        .controlSize(.large)
+                }
                 if let error = productStore.errorMessage {
                     Text(error)
                         .foregroundColor(.red)

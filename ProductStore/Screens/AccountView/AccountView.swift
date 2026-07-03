@@ -44,6 +44,7 @@ struct AccountView: View {
                         .autocorrectionDisabled()
                     DatePicker("Birthday",
                                selection: $accountStore.user.dateOfBirth,
+                               in: Date().oneHundredTenYearsAge...Date().eighteenYearsAgo,
                                displayedComponents: .date)
                     Button {
                         accountStore.saveChanges()

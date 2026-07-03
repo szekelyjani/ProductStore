@@ -33,6 +33,7 @@ struct OrderView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .controlSize(.large)
+                        .padding(.bottom)
                     }
                 }
             }
