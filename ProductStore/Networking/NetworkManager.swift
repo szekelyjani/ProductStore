@@ -13,8 +13,7 @@ final class NetworkManager {
     private let baseURL = "https://dummyjson.com/products"
     private init() { }
 
-    @MainActor
-    func getAppetizers() async throws -> [Product] {
+    func getProducts() async throws -> [Product] {
         guard let url = URL(string: baseURL) else {
             throw APIError.invalidURL
         }
@@ -28,7 +27,7 @@ final class NetworkManager {
             let response = try JSONDecoder().decode(ProductResponse.self, from: data)
             return response.products
         } catch {
-            throw APIError.taskCancellation
+            throw APIError.invalidData
         }
     }
 }

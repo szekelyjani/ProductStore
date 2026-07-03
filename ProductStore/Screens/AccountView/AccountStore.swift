@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 
+@MainActor
 final class AccountStore: ObservableObject {
     @AppStorage("user") private var userData: Data?
     @Published var user = User()

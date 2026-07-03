@@ -9,8 +9,8 @@ import Foundation
 
 enum APIError: Error, LocalizedError {
     case invalidURL
+    case invalidData
     case invalidResponse
-    case requersFailed(statusCode: Int, message: String?)
     case networkError(Error)
     case taskCancellation
 
@@ -18,10 +18,10 @@ enum APIError: Error, LocalizedError {
         switch self {
         case .invalidURL:
             "Invalid URL"
+        case .invalidData:
+            "Invalid Data"
         case .invalidResponse:
             "Invalid Response"
-        case .requersFailed(_, _):
-            "Request failed"
         case .networkError(_):
             "Network error"
         case .taskCancellation:

@@ -15,9 +15,13 @@ final class ProductStore: ObservableObject {
 
     func getProducts() async {
         do {
-            products = try await NetworkManager.shared.getAppetizers()
+            products = try await NetworkManager.shared.getProducts()
         } catch {
-            errorMessage = error.localizedDescription
+            if let apiError = error as? APIError {
+                errorMessage = apiError.errorDescription
+            } else {
+                errorMessage = error.localizedDescription
+            }
         }
     }
 }
